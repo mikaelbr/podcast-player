@@ -1,0 +1,24 @@
+{
+  "name": "podcast-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "podcast": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "feedparser": "^2.2.8",
+    "inquirer": "^5.0.1",
+    "lame": "^1.2.4",
+    "picture-tube": "^1.0.0",
+    "request": "^2.83.0",
+    "speaker": "^0.4.0"
+  }
+}
