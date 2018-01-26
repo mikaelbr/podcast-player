@@ -16,7 +16,7 @@ if (!input) {
   process.exit(1);
 }
 
-const req = request('https://rss.simplecast.com/podcasts/4239/rss');
+const req = request(input);
 const feedparser = new FeedParser();
 
 var options = {
