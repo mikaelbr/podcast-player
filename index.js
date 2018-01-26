@@ -11,7 +11,7 @@ const input = process.argv[2];
 
 if (!input) {
   console.error('Please provide an RSS feed');
-  console.log('Example:');
+  console.log('Example usage:');
   console.log('  podcast https://rss.simplecast.com/podcasts/4239/rss');
   process.exit(1);
 }
