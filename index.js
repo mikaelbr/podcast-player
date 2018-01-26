@@ -6,13 +6,40 @@ const request = require('request');
 const Speaker = require('speaker');
 const lame = require('lame');
 const chalk = require('chalk');
+const ora = require('ora');
 
+const package = require('./package.json');
+const version = chalk.yellow(package.version);
+const binName = chalk.blue(Object.keys(package.bin)[0]);
 const input = process.argv[2];
 
+function printVersion() {
+  console.log(`${binName} – version: ${version}`);
+}
+
+function printHelp() {
+  return console.log(`
+$ ${binName} <RSS feed>
+
+Example
+${binName} https://rss.simplecast.com/podcasts/4239/rss
+`);
+}
+
+if (input === '-v' || input === '--version') {
+  printVersion();
+  printHelp();
+  process.exit(0);
+}
+
+if (input === '-h' || input === '--help' || input === '?') {
+  printHelp();
+  process.exit(0);
+}
+
 if (!input) {
-  console.error('Please provide an RSS feed');
-  console.log('Example usage:');
-  console.log('  podcast https://rss.simplecast.com/podcasts/4239/rss');
+  console.error(chalk.red('Please provide an RSS feed to ') + binName);
+  printHelp();
   process.exit(1);
 }
 
@@ -88,5 +115,6 @@ function selectSong(items) {
         return process.exit(1);
       }
       startPlaying(episodeToPlay);
+      ora(`Now playing ${chalk.green(episode)}`).start();
     });
 }
